@@ -16,8 +16,6 @@ class Projects {
         ([""]+l).join(":")
     }
 
-    //todo createMissingTask(...)
-
     //todo docs
     static <T extends Task> T createTask(Project project, String name, Class<T> type, String group, String desc, Closure config){
         log.info("Creating '$name' task in project ${fullName(project)}")
@@ -30,6 +28,15 @@ class Projects {
             ],
             config
         )
+    }
+
+    static <T extends Task> T getOrCreateTask(Project project, String name, Class<T> type, String group, String desc, Closure config){
+        def existing = project.tasks.findByName(name)
+        if (existing){
+            log.info("Task '${name}' already exists in project ${fullName(project)}")
+            return existing
+        }
+        createTask(project, name, type, group, desc, config)
     }
 
     /**

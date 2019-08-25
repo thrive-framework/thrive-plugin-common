@@ -4,7 +4,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.Task
 
-import static com.github.thriveframework.plugin.utils.Projects.createTask
+import static com.github.thriveframework.plugin.utils.Projects.getOrCreateTask
 
 class VersionTasks {
     //todo create when missing
@@ -12,7 +12,7 @@ class VersionTasks {
     //todo docs
     static Echo createWriteVersion(Project project){
         def targetProvider = { new File(project.buildDir, "generated/metadata/version.txt") }
-        def writeVersion = createTask(
+        def writeVersion = getOrCreateTask(
             project,
             "writeVersion",
             Echo,
@@ -31,10 +31,9 @@ class VersionTasks {
         return writeVersion
     }
 
-    //todo test it
     //todo docs
     static Task createPrintVersion(Project project, String prefix = "Project version:"){
-        createTask(
+        getOrCreateTask(
             project,
             "printVersion",
             DefaultTask,
