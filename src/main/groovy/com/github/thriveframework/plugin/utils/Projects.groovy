@@ -18,25 +18,34 @@ class Projects {
 
     //todo docs
     static <T extends Task> T createTask(Project project, String name, Class<T> type, String group, String desc, Closure config){
+        createTask(project, name, type, group, desc, [], config)
+    }
+
+    static <T extends Task> T createTask(Project project, String name, Class<T> type, String group, String desc, List constructorArgs, Closure config){
         log.info("Creating '$name' task in project ${fullName(project)}")
         project.tasks.create(
             [
                 name: name,
                 type: type,
                 description: desc,
-                group: group
+                group: group,
+                constructorArgs: constructorArgs
             ],
             config
         )
     }
 
     static <T extends Task> T getOrCreateTask(Project project, String name, Class<T> type, String group, String desc, Closure config){
+        getOrCreateTask(project, name, type, group, desc, [], config)
+    }
+
+    static <T extends Task> T getOrCreateTask(Project project, String name, Class<T> type, String group, String desc, List constructorArgs, Closure config){
         def existing = project.tasks.findByName(name)
         if (existing){
             log.info("Task '${name}' already exists in project ${fullName(project)}")
             return existing
         }
-        createTask(project, name, type, group, desc, config)
+        createTask(project, name, type, group, desc, constructorArgs, config)
     }
 
     /**
