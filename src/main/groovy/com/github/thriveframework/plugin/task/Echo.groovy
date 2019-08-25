@@ -11,13 +11,23 @@ import org.gradle.api.tasks.TaskAction
 
 import javax.inject.Inject
 
-//todo docs
+/**
+ * Writes specified content to specified file. As easy as that.
+ *
+ * Useful as a base class for other tasks, but can be configured in {@code project.tasks.create} as well.
+ */
 @CacheableTask
 class Echo extends DefaultTask {
+    /**
+     * Text to be written.
+     */
     @Input
     Property<String> content
 
-    @OutputFile //todo this misbehaved in some  cases
+    /**
+     * File which should contain specified content.
+     */
+    @OutputFile
     final RegularFileProperty target
 
     @Inject
