@@ -23,6 +23,31 @@ dependencies {
     implementation gradleApi()
 }
 
+// fixme for the same reason as hardcoded version
+tasks.create("sourcesJar", org.gradle.jvm.tasks.Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+tasks.create("javadocJar", org.gradle.jvm.tasks.Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
+
+publishMainPublicationToMavenLocal.dependsOn build
+//end fixme
+
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
     gradleVersion = '5.5'
