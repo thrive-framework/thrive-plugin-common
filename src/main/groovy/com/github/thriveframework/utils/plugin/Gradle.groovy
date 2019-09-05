@@ -1,4 +1,4 @@
-package com.github.thriveframework.plugin.utils
+package com.github.thriveframework.utils.plugin
 
 import org.gradle.util.GradleVersion
 

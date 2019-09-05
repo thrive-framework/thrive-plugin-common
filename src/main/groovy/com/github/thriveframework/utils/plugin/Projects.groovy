@@ -1,4 +1,4 @@
-package com.github.thriveframework.plugin.utils
+package com.github.thriveframework.utils.plugin
 
 import groovy.util.logging.Slf4j
 import org.gradle.api.Project

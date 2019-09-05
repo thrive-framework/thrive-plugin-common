@@ -1,4 +1,4 @@
-package com.github.thriveframework.plugin.task
+package com.github.thriveframework.utils.plugin.task
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.RegularFileProperty

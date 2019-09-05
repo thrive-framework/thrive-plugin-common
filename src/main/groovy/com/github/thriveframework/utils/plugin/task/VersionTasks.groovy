@@ -1,10 +1,10 @@
-package com.github.thriveframework.plugin.task
+package com.github.thriveframework.utils.plugin.task
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.Task
 
-import static com.github.thriveframework.plugin.utils.Projects.getOrCreateTask
+import static com.github.thriveframework.utils.plugin.Projects.getOrCreateTask
 
 /**
  * Fixtures for a few project-version-related tasks. These do not provide much value, but they are pretty useful
