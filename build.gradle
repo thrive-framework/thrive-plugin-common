@@ -1,22 +1,15 @@
-buildscript {
-    repositories {
-        maven {
-            name "jitpack"
-            url "https://jitpack.io"
-        }
-    }
-    dependencies {
-        classpath "com.github.thrive-framework:thrive-versioning-plugin:0.2.0-SNAPSHOT"
-    }
-}
-
 plugins {
     id 'maven-publish'
     id 'groovy'
     id 'java-library'
 }
 
-apply plugin: "com.github.thrive-versioning"
+// LOOK OUT!
+// Versioning plugin requires this common code, so this project needs to use versioning that depends
+// on common in before current snapshot. Before 0.1.0 we need to manage versioning by hand
+// todo after 0.1.0 - rebuild versioning plugin with release of this; make that a release, probably patch
+// todo after previous todo - use versioning here
+version = "0.1.0-SNAPSHOT"
 
 ext {
     springBootVersion  = '2.1.6.RELEASE'
