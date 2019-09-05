@@ -84,7 +84,7 @@ class Projects {
      * @param project project to which the plugin should be applied
      * @param plugin plugin to be applied
      */
-    static void applyPlugin(Project project, plugin){
+    static void applyPlugin(project, plugin){
         String nameToLog;
         if (plugin instanceof Class)
             nameToLog = plugin.canonicalName
